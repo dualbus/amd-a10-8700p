@@ -1,0 +1,2 @@
+Architecture: https://en.wikipedia.org/wiki/Excavator_(microarchitecture)
+Unveil: http://www.amd.com/en-us/who-we-are/corporate-information/events/isscc

@@ -1,0 +1,41 @@
+URL:
+Kernel: 4.9.51+ VANILLA
+Stack trace:
+[208705.569293] BUG: unable to handle kernel NULL pointer dereference at 0000000000000190
+[208705.569378] IP: [<ffffffffc064c36f>] amdgpu_cs_ioctl+0x102f/0x1480 [amdgpu]
+[208705.569537] PGD 0 
+[208705.569554] 
+[208705.569572] Oops: 0000 [#1] SMP
+[208705.569600] Modules linked in: uas usb_storage ccm hid_generic usbhid hid rfcomm cmac bnep nls_iso8859_1 hp_wmi sparse_keymap uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_core videodev media btusb arc4 rtl8723be btrtl btbcm edac_mce_amd btcoexist edac_core btintel rtl8723_common rtl_pci bluetooth rtlwifi mac80211 kvm_amd snd_hda_codec_realtek kvm snd_hda_codec_hdmi snd_hda_codec_generic irqbypass cfg80211 snd_hda_intel snd_hda_codec snd_hda_core rtsx_pci_ms snd_hwdep snd_pcm joydev input_leds memstick serio_raw snd_seq_midi snd_seq_midi_event snd_rawmidi snd_seq i2c_piix4 k10temp fam15h_power snd_seq_device hp_accel snd_timer lis3lv02d input_polldev snd i2c_designware_platform i2c_designware_core shpchp 8250_dw hp_wireless soundcore tpm_crb mac_hid parport_pc ppdev lp parport
+[208705.570321]  ip_tables x_tables autofs4 algif_skcipher af_alg dm_crypt rtsx_pci_sdmmc amdkfd amd_iommu_v2 crct10dif_pclmul crc32_pclmul ghash_clmulni_intel amdgpu aesni_intel aes_x86_64 lrw glue_helper ablk_helper cryptd i2c_algo_bit ttm psmouse drm_kms_helper syscopyarea sysfillrect sysimgblt ahci fb_sys_fops libahci drm r8169 rtsx_pci mii wmi fjes video
+[208705.570623] CPU: 2 PID: 1342 Comm: amdgpu_cs:0 Not tainted 4.9.51+ #1
+[208705.570672] Hardware name: HP HP Pavilion Notebook/8246, BIOS F.05 06/02/2016
+[208705.570732] task: ffff9ca5aa2d44c0 task.stack: ffff9ca5a6e0c000
+[208705.570777] RIP: 0010:[<ffffffffc064c36f>]  [<ffffffffc064c36f>] amdgpu_cs_ioctl+0x102f/0x1480 [amdgpu]
+[208705.570898] RSP: 0018:ffff9ca5a6e0fb90  EFLAGS: 00010246
+[208705.570939] RAX: ffff9ca5a6e0fc90 RBX: ffff9ca5a6e0fc90 RCX: ffff9ca5a8ca8e00
+[208705.571012] RDX: ffff9ca5a9feb860 RSI: ffff9ca5a8ca8e00 RDI: ffff9ca536751c00
+[208705.571082] RBP: ffff9ca5a6e0fd38 R08: ffff9ca5aad93000 R09: ffff9ca25d708d40
+[208705.571136] R10: fffff93e8dd9d400 R11: 0000000000000002 R12: 0000000000000000
+[208705.571190] R13: ffff9ca536751c00 R14: ffff9ca5a6e0fbf8 R15: 0000000000000000
+[208705.571245] FS:  00007fc395d1a700(0000) GS:ffff9ca5bed00000(0000) knlGS:0000000000000000
+[208705.571305] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[208705.571349] CR2: 0000000000000190 CR3: 00000003ebf91000 CR4: 00000000001406e0
+[208705.571403] Stack:
+[208705.571422]  ffff9ca5a8ca9200 ffff9ca500000000 00000000bed191e8 ffff9ca5a6e0fd98
+[208705.571486]  ffff9ca5a6e0fbd8 ffff9ca5a8ca9200 ffff9ca500000001 ffff9ca500000000
+[208705.571550]  ffff9ca5a3a44aa8 ffff9ca5a6e0fbd8 ffff9ca5a6e0fbd8 ffff9ca5a6e0fbe8
+[208705.571614] Call Trace:
+[208705.571658]  [<ffffffffc03fefdb>] drm_ioctl+0x21b/0x4c0 [drm]
+[208705.571748]  [<ffffffffc064b340>] ? amdgpu_cs_find_mapping+0xa0/0xa0 [amdgpu]
+[208705.571810]  [<ffffffffb3f007c0>] ? do_futex+0x2b0/0xb60
+[208705.571891]  [<ffffffffc062d04f>] amdgpu_drm_ioctl+0x4f/0x90 [amdgpu]
+[208705.571946]  [<ffffffffb402e5f3>] do_vfs_ioctl+0xa3/0x600
+[208705.572009]  [<ffffffffb4674fd0>] ? __schedule+0x190/0x650
+[208705.572070]  [<ffffffffb402ebc9>] SyS_ioctl+0x79/0x90
+[208705.572112]  [<ffffffffb467a1fb>] entry_SYSCALL_64_fastpath+0x1e/0xad
+[208705.572161] Code: ff 4c 8b ad e8 fe ff ff 4d 8b a5 e0 00 00 00 4c 8b 85 d0 fe ff ff 4c 89 ef 48 8b 8d c8 fe ff ff 48 c7 85 e8 fe ff ff 00 00 00 00 <41> 8b 9c 24 90 01 00 00 49 8d b4 24 80 00 00 00 4c 89 85 90 fe 
+[208705.572440] RIP  [<ffffffffc064c36f>] amdgpu_cs_ioctl+0x102f/0x1480 [amdgpu]
+[208705.572539]  RSP <ffff9ca5a6e0fb90>
+[208705.572567] CR2: 0000000000000190
+[208705.582638] ---[ end trace 3fa792ae9021625e ]---
