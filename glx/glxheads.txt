@@ -1,0 +1,13 @@
+dualbus@ubuntu:~$ glxheads 
+glxheads: exercise multiple GLX connections (any key = exit)
+Usage:
+  glxheads xdisplayname ...
+Example:
+  glxheads :0 mars:0 venus:1
+Name: :0
+  Display:     0x55a9ea85e420
+  Window:      0xa00002
+  Context:     0x55a9ea876500
+  GL_VERSION:  3.0 Mesa 17.0.7
+  GL_VENDOR:   X.Org
+  GL_RENDERER: Gallium 0.4 on AMD CARRIZO (DRM 3.9.0 / 4.10.0-35-generic, LLVM 4.0.0)
